@@ -13,11 +13,10 @@ typedef struct Menu{
 }Menu;
 
 void menuPrincipal(Juego juego);
-void visualizarDatos(Juego juego);
 void menuTablero(Juego juego);
 Juego generarJuego();
 void menuJugador(Juego juego);
-void pedirPrimerosDatos();
+char pedirMovimiento();
 void menuMovimientos(Tablero *tablero);
 
 #endif /* MENU_H */

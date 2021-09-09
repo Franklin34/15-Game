@@ -14,18 +14,17 @@ void menuPrincipal(Juego juego){
     clrscr();
     menuTablero(juego);
     clrscr();
-    visualizarDatos(juego);
+    visualizarPartida(juego.tablero,juego.jugador);
     realizarMovimiento(juego.tablero);
+    
+    visualizarMovimientosPosibles(juego.tablero);
+    
+    printf("%s\n","");
+    printf("%c",pedirMovimiento());
 }
 
 void menuTablero(Juego juego){
-    int filas;
-    int columnas;
-    printf("%s","Digite la cantidad de filas: ");
-    scanf("%d",&filas);
-    printf("%s","Digite la cantidad de columnas: ");
-    scanf("%d",&columnas);
-    inicializarJuego(juego.tablero,filas,columnas);
+    inicializarJuego(juego.tablero,4,4);
 }
 
 void menuJugador(Juego juego){
@@ -35,19 +34,15 @@ void menuJugador(Juego juego){
     strcpy(juego.jugador->nombre, nombre);
 }
 
-void visualizarDatos(Juego juego){
-    printf("%s","Nombre del jugador: ");
-    printf("%s",juego.jugador->nombre);
-    printf("%s\n","");
-    printf("%s\n","");
-    visualizarTablero(juego.tablero);
-    printf("%s\n","");
-}
-
 void menuMovimientos(Tablero *tablero){
     
 }
 
-void pedirPrimerosDatos(){
+char pedirMovimiento(){
+    char movimiento[2];
+    printf("%s","Digite su movimiento: ");
+    scanf("%s",&movimiento);
+    strupr(movimiento);
     
+    return movimiento[0];
 }
