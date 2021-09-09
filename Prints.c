@@ -19,10 +19,12 @@ void visualizarTablero(Tablero* tablero) {
 }
 
 void visualizarJugador(Jugador* jugador) {
-    printf("%s","Nombre del jugador: ");
+    printf("%s","Jugador: ");
     printf("%s",jugador->nombre);
-    printf("%s\n","");
-    printf("%s\n","");
+    printf("%s"," | ");
+    printf("%s","Movimientos: ");
+    printf("%d",jugador->numMovimientos);
+    printf("%s\n\n","");
 }
 
 void visualizarMovimientosPosibles(Tablero *tablero){

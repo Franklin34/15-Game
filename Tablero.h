@@ -13,8 +13,7 @@ typedef struct Tablero{
 }Tablero;
 
 void inicializarTablero(Tablero* tablero,int filas,int columnas);
-void llenarTablero(Tablero* tablero);
-void moverPosicion(Tablero* tablero);
+void llenarTablero(Tablero* tablero,bool trampa);
 bool verificarRepetido(Tablero* tablero,int num);
 bool verificarPartida(Tablero* tablero);
 int* retornarMovimientosPos(Tablero* tablero);
@@ -22,7 +21,9 @@ bool validarMovDerecha(Tablero*tablero);
 bool validarMovIzquierda(Tablero*tablero);
 bool validarMovAbajo(Tablero*tablero);
 bool validarMovArriba(Tablero*tablero);
-void liberarMemoriaTablero(Tablero* tablero);
-int calcularPuntaje(Tablero*tablero);
+void moverDerecha(Tablero*tablero);
+void moverIzquierda(Tablero*tablero);
+void moverArriba(Tablero*tablero);
+void moverAbajo(Tablero*tablero);
 #endif /* TABLERO_H */
 

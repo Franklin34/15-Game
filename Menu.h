@@ -8,16 +8,11 @@
 #include "Jugador.h"
 #include "Juego.h"
 
-typedef struct Menu{
-    Juego juego;
-}Menu;
-
 void menuPrincipal(Juego juego);
 void menuTablero(Juego juego);
 Juego generarJuego();
 void menuJugador(Juego juego);
 char pedirMovimiento();
-void menuMovimientos(Tablero *tablero);
 
 #endif /* MENU_H */
 

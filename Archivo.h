@@ -3,7 +3,6 @@
 #include "Jugador.h"
 
 void guardarUsuario(Jugador *jugador);
-void leerUsuario();
 
 #endif /* ARCHIVO_H */
 

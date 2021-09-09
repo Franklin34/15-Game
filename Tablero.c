@@ -23,21 +23,35 @@ bool verificarRepetido(Tablero* tablero, int num) {
     return false;
 }
 
-void llenarTablero(Tablero* tablero) {
+void llenarTablero(Tablero* tablero, bool trampa) {
     int random = 0;
-    for (int i = 0; i < tablero->filas; i++) {
-        for (int j = 0; j < tablero->columnas; j++) {
-            if (random == 0) {
-                random = rand() % JUGADOR + 1;
-                tablero->tablero[i][j] = random;
-            } else {
-                while (verificarRepetido(tablero, random) == true) {
+    int random2 = 1;
+    if (trampa == false) {
+        for (int i = 0; i < tablero->filas; i++) {
+            for (int j = 0; j < tablero->columnas; j++) {
+                if (random == 0) {
                     random = rand() % JUGADOR + 1;
+                    tablero->tablero[i][j] = random;
+                } else {
+                    while (verificarRepetido(tablero, random) == true) {
+                        random = rand() % JUGADOR + 1;
+                    }
+                    tablero->tablero[i][j] = random;
                 }
-                tablero->tablero[i][j] = random;
             }
         }
     }
+    else{
+        for (int i = 0; i < tablero->filas; i++) {
+            for (int j = 0; j < tablero->columnas; j++) {
+                tablero->tablero[i][j] = random2++;
+            }
+        }
+        int valor = tablero->tablero[3][3];
+        tablero->tablero[3][2] = valor;
+        tablero->tablero[3][3] = 15;
+    }
+
 }
 
 bool verificarPartida(Tablero* tablero) {
@@ -55,28 +69,28 @@ bool verificarPartida(Tablero* tablero) {
 }
 
 int* retornarMovimientosPos(Tablero* tablero) {
-    int *movimientos = malloc(4*sizeof(int));
-    
-    for(int i = 0;i < 4;i++){
+    int *movimientos = malloc(4 * sizeof (int));
+
+    for (int i = 0; i < 4; i++) {
         movimientos[i] = 0;
     }
-    
-    if(validarMovDerecha(tablero) == true){
+
+    if (validarMovDerecha(tablero) == true) {
         movimientos[0] = 1;
     }
-    
-    if(validarMovIzquierda(tablero) == true){
+
+    if (validarMovIzquierda(tablero) == true) {
         movimientos[1] = 2;
     }
-    
-    if(validarMovAbajo(tablero) == true){
+
+    if (validarMovAbajo(tablero) == true) {
         movimientos[2] = 3;
     }
-    
-    if(validarMovArriba(tablero) == true){
+
+    if (validarMovArriba(tablero) == true) {
         movimientos[3] = 4;
     }
-    
+
     return movimientos;
 }
 
@@ -131,4 +145,60 @@ bool validarMovArriba(Tablero*tablero) {
         }
     }
     return true;
+}
+
+void moverDerecha(Tablero*tablero) {
+    int valor = 0;
+    for (int i = 0; i < tablero->filas; i++) {
+        for (int j = 0; j < tablero->columnas; j++) {
+            if (tablero->tablero[i][j] == JUGADOR) {
+                valor = tablero->tablero[i][j + 1];
+                tablero->tablero[i][j] = valor;
+                tablero->tablero[i][j + 1] = JUGADOR;
+                return;
+            }
+        }
+    }
+}
+
+void moverIzquierda(Tablero*tablero) {
+    int valor = 0;
+    for (int i = 0; i < tablero->filas; i++) {
+        for (int j = 0; j < tablero->columnas; j++) {
+            if (tablero->tablero[i][j] == JUGADOR) {
+                valor = tablero->tablero[i][j - 1];
+                tablero->tablero[i][j] = valor;
+                tablero->tablero[i][j - 1] = JUGADOR;
+                return;
+            }
+        }
+    }
+}
+
+void moverArriba(Tablero*tablero) {
+    int valor = 0;
+    for (int i = 0; i < tablero->filas; i++) {
+        for (int j = 0; j < tablero->columnas; j++) {
+            if (tablero->tablero[i][j] == JUGADOR) {
+                valor = tablero->tablero[i - 1][j];
+                tablero->tablero[i][j] = valor;
+                tablero->tablero[i - 1][j] = JUGADOR;
+                return;
+            }
+        }
+    }
+}
+
+void moverAbajo(Tablero*tablero) {
+    int valor = 0;
+    for (int i = 0; i < tablero->filas; i++) {
+        for (int j = 0; j < tablero->columnas; j++) {
+            if (tablero->tablero[i][j] == JUGADOR) {
+                valor = tablero->tablero[i + 1][j];
+                tablero->tablero[i][j] = valor;
+                tablero->tablero[i + 1][j] = JUGADOR;
+                return;
+            }
+        }
+    }
 }

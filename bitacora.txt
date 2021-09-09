@@ -1,0 +1,12 @@
+El nombre del jugador es: Franklin
+El numero de movimientos realizados: 1
+
+El nombre del jugador es: Sofia
+El numero de movimientos realizados: 1
+
+El nombre del jugador es: Franklin
+El numero de movimientos realizados: 1
+
+El nombre del jugador es: fsd
+El numero de movimientos realizados: 1
+
